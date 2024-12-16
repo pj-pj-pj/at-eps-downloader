@@ -2,6 +2,7 @@ import os
 import time
 import random
 import pyautogui
+import re
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
@@ -12,7 +13,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 browser_path = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 driver_path = r"edgedriver_win64/msedgedriver.exe"
-downloads_folder = r"C:\Users\peaks\Videos\AT"
+downloads_folder = r"C:\Users\peaks\downloads"
 
 def is_download_complete(folder):
     while True:
@@ -23,7 +24,7 @@ def is_download_complete(folder):
             break
         time.sleep(1)
 
-# url = "https://www.wcostream.tv/adventure-time-season-1-episode-1-slumber-party-panic"  # starts at first episode
+url = "https://www.wcostream.tv/adventure-time-season-1-episode-1-slumber-party-panic"  # starts at first episode
 
 # test for last episode to see what happens if there is no next episode
 # if else statement below is useless -> IT BREAKS
@@ -45,13 +46,14 @@ while True:
 
         episode_title_element = driver.find_element(By.XPATH, '//*[@id="content"]/table/tbody/tr/td[1]/table/tbody/tr/td/table[1]/tbody/tr[1]/td/h1/a')
         title = episode_title_element.text
+        title = re.sub(r'[^a-zA-Z0-9]', '_', title)
         print(title)
 
         video_container = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'iframe#frameNewcizgifilmuploads0'))
         )
         video_container.click()
-        time.sleep(random.uniform(60, 70))
+        time.sleep(random.uniform(50, 60))
 
         driver.switch_to.frame(video_container)
 
