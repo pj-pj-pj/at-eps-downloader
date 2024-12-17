@@ -53,7 +53,7 @@ while True:
             EC.presence_of_element_located((By.CSS_SELECTOR, 'iframe#frameNewcizgifilmuploads0'))
         )
         video_container.click()
-        time.sleep(random.uniform(50, 60))
+        time.sleep(random.uniform(20, 35))
 
         driver.switch_to.frame(video_container)
 
