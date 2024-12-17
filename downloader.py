@@ -74,7 +74,7 @@ while True:
         pyautogui.press('enter')
 
         # wait cos my human eyes are not following
-        time.sleep(random.uniform(1, 3))
+        time.sleep(6)
 
         pyautogui.press('backspace')
         pyautogui.write(title)
