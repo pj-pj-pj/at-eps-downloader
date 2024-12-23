@@ -1,2 +1,2 @@
 # at-eps-downloader
-python script to download all adventure time episodes for binging (✿◡‿◡)
+python script to download all of a cartoon show episodes for binging (✿◡‿◡)
